@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -57,6 +58,7 @@ public class BaseTest {
 		report.setSystemInfo("OS", "Windows");
 		report.setSystemInfo("Environment", "QA");
 		report.setSystemInfo("User Name", "Maddy");
+		//report.setSystemInfo("User Name", "Maddy");
 
 		fis = new FileInputStream(projectpath + "//log4jconfig.properties");
 		PropertyConfigurator.configure(fis);
@@ -91,6 +93,9 @@ public class BaseTest {
 			System.setProperty("WebDriver.ie.driver", "C:\\Users\\yavyo\\Desktop\\seleniumproject\\IEDriverServer.exe");
 			driver=new InternetExplorerDriver();
 
+		}else if(browser.equals("edge")) {
+			System.setProperty("webdriver.edge.driver", "C:\\Users\\yavyo\\Desktop\\seleniumproject\\msedgedriver.exe");
+			 driver = new EdgeDriver();
 		}
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
